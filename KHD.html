@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hyarics - Accueil</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Bradley+Hand&display=swap');
+
+    .loader-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      display: none;
+    }
+    .loader {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      animation: animate 2s linear infinite;
+    }
+    .loader1:before,
+    .loader2:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(to top, transparent, rgba(0, 255, 249, 0.4));
+      border-top-left-radius: 100px;
+      border-bottom-left-radius: 100px;
+    }
+    .loader2, .loader4 {
+      animation-delay: -1s;
+      filter: hue-rotate(290deg);
+    }
+    .loader i {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 20px;
+      height: 20px;
+      background: #00fff9;
+      border-radius: 50%;
+      z-index: 100;
+      box-shadow: 0 0 10px #00fff9, 0 0 20px #00fff9, 0 0 30px #00fff9,
+                  0 0 40px #00fff9, 0 0 50px #00fff9, 0 0 60px #00fff9,
+                  0 0 70px #00fff9, 0 0 80px #00fff9, 0 0 90px #00fff9,
+                  0 0 100px #00fff9;
+    }
+    .loader span {
+      position: absolute;
+      inset: 20px;
+      background: #000;
+      border-radius: 50%;
+      z-index: 1;
+    }
+    @keyframes animate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #0f0f0f;
+      color: white;
+      font-family: 'Bradley Hand', cursive;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 50px;
+      background-color: #111;
+    }
+
+    .logo {
+      font-size: 30px;
+      font-weight: bold;
+      color: #eed090;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo i {
+      color: #62eb13;
+    }
+
+    .social-buttons {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .social-buttons a {
+      text-decoration: none;
+      padding: 8px 14px;
+      border-radius: 5px;
+      font-weight: bold;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.3s ease;
+      border: 1px solid transparent;
+    }
+
+    .facebook { background-color: #3b5998; color: white; }
+    .facebook:hover { background-color: white; color: #3b5998; border-color: #3b5998; }
+    .instagram { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285AEB 90%); color: white; }
+    .instagram:hover { background-color: white; color: #d6249f; border-color: #d6249f; }
+    .tiktok { background-color: #333; color: white; }
+    .tiktok:hover { background-color: white; color: #333; border-color: #333; }
+    .whatsapp { background-color: #1eb500; color: white; }
+    .whatsapp:hover { background-color: white; color: #1eb500; border-color: #1eb500; }
+
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 30px 20px;
+    }
+
+    h2 {
+      font-size: 60px;
+      color: #f56505;
+      margin: 10px 0;
+    }
+
+    .description {
+      max-width: 600px;
+      margin: 20px auto;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    .skills {
+      margin-top: 30px;
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 10px;
+    }
+
+    .skills h3 {
+      margin-bottom: 20px;
+      font-size: 28px;
+    }
+
+    .skills-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .skill-card {
+      background-color: #1e1e1e;
+      border-radius: 10px;
+      padding: 14px 10px;
+      text-align: center;
+      border: 2px solid #4caf50;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: default;
+      min-width: 0;
+      font-size: 15px;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 12px rgba(76, 175, 80, 0.6);
+    }
+
+    @media (max-width: 768px) {
+      .skills-row {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .skills-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .buttons {
+      margin-top: 30px;
+    }
+
+    .buttons a {
+      display: inline-block;
+      text-decoration: none;
+      background: #62eb13;
+      color: black;
+      padding: 10px 20px;
+      margin: 0 10px;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    .buttons a:hover {
+      background: #327a1e;
+      color: white;
+    }
+
+    .blog {
+      margin-top: 50px;
+      padding: 20px;
+      background-color: #1a1a1a;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      border-radius: 8px;
+    }
+
+    .blog h3 {
+      color: #62eb13;
+      margin-bottom: 15px;
+    }
+
+    .blog article {
+      margin-bottom: 20px;
+    }
+
+    .blog article h4 {
+      margin: 5px 0;
+      color: #eed090;
+    }
+
+    .blog article p {
+      font-size: 16px;
+      line-height: 1.5;
+      color: #ccc;
+    }
+
+    .lang-switch {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+    }
+
+    .lang-switch button {
+      padding: 6px 12px;
+      background-color: #62eb13;
+      border: none;
+      border-radius: 4px;
+      color: black;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    footer {
+      margin-top: 50px;
+      background-color: #111;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #aaa;
+    }
+
+    footer .social-buttons {
+      justify-content: center;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="loader-container" id="loader">
+    <div class="loader loader1"><span></span></div>
+    <div class="loader loader2"><span></span></div>
+    <div class="loader loader3"><i></i></div>
+    <div class="loader loader4"><i></i></div>
+  </div>
+
+  <div class="lang-switch">
+    <button onclick="switchLang()">FR / EN</button>
+  </div>
+
+  <nav>
+    <div class="logo"><i class="fas fa-user"></i> HyaricsKhd</div>
+    <div class="social-buttons">
+      <a href="https://facebook.com/"target="_blank" class="facebook"><i class="fab fa-facebook-f"></i> Facebook</a>
+      <a href="https://instagram.com/" target="_blank" class="instagram"><i class="fab fa-instagram"></i> Instagram</a>
+      <a href="https://tiktok.com/" target="_blank" class="tiktok"><i class="fab fa-tiktok"></i> TikTok</a>
+      <a href="https://whatsapp.com/" target="_blank" class="whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <h2><i class="fas fa-computer"></i> HyaricsKhd</h2>
+    <p class="description">
+      Je suis passionné par l'automatisation, l'électronique et le développement web.<br>
+      Ce site est un aperçu de mes projets, de mes compétences et de mon parcours.
+    </p>
+
+    <div class="skills">
+      <h3>Compétences :</h3>
+      <div class="skills-row">
+        <div class="skill-card"><i class="fas fa-code"></i><br>Programmation (C, Python, HTML/CSS)</div>
+        <div class="skill-card"><i class="fas fa-microchip"></i><br>Arduino & Automates (API)</div>
+        <div class="skill-card"><i class="fas fa-cogs"></i><br>Simulation & contrôle : AUTOMGEN</div>
+        <div class="skill-card"><i class="fas fa-paint-brush"></i><br>UI/UX & Design Web</div>
+      </div>
+    </div>
+
+    <div class="buttons">
+      <a href="projets.html" class="delayed-link"><i class="fas fa-folder-open"></i> Mes projets</a>
+      <a href="contact.html" class="delayed-link"><i class="fas fa-envelope"></i> Me contacter</a>
+      <a href="docs/CV_Hyarics.pdf" download><i class="fas fa-download"></i> Télécharger mon CV</a>
+    </div>
+  </div>
+
+  <div class="blog">
+    <h3>Blog / Actualités</h3>
+    <article>
+      <h4>Nouveau projet domotique</h4>
+      <p>J'ai récemment commencé un projet de maison connectée utilisant ESP32 et capteurs DHT11. Plus à venir bientôt !</p>
+    </article>
+    <article>
+      <h4>Ma participation à un hackathon</h4>
+      <p>J’ai participé à un concours où j’ai développé une solution de sécurité intelligente. Ce fut une belle expérience !</p>
+    </article>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Hyarics. Tous droits réservés.</p>
+    <div class="social-buttons">
+      <a href="https://facebook.com/" target="_blank" class="facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://instagram.com/" target="_blank" class="instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://tiktok.com/" target="_blank" class="tiktok"><i class="fab fa-tiktok"></i></a>
+      <a href="https://whatsapp.com/" target="_blank" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
+    </div>
+  </footer>
+
+  <script>
+    function switchLang() {
+      alert("La version multilingue arrive bientôt ! (Langue FR/EN)");
+    }
+
+    document.querySelectorAll('.delayed-link').forEach(link => {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        const href = this.getAttribute('href');
+        document.getElementById('loader').style.display = 'flex';
+        setTimeout(() => {
+          window.location.href = href;
+        }, 3000);
+      });
+    });
+  </script>
+</body>
+</html>
